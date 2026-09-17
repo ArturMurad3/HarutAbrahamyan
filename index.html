@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="hy">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<title>Աբրահամյան Հարութ</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Noto+Serif+Armenian:wght@400;500;600;700&family=Noto+Sans+Armenian:wght@300;400;500;600&display=swap');
+
+  :root{
+    --bg: #08070a;
+    --surface: #14121a;
+    --surface-2: #1b1822;
+    --gold-1: #f0cd8c;
+    --gold-2: #b8863f;
+    --gold-3: #6e4f27;
+    --violet: #2a2140;
+    --ivory: #f1ead9;
+    --muted: #948d9c;
+    --hairline: rgba(240,205,140,0.14);
+  }
+
+  *{ box-sizing: border-box; }
+
+  html, body{
+    margin:0;
+    padding:0;
+    background: var(--bg);
+    color: var(--ivory);
+    font-family: 'Noto Sans Armenian', sans-serif;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  body{
+    min-height: 100vh;
+    min-height: 100dvh;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding: 40px 20px;
+    position: relative;
+    overflow-x: hidden;
+    background:
+      radial-gradient(ellipse 900px 600px at 20% -10%, rgba(184,134,63,0.16), transparent 55%),
+      radial-gradient(ellipse 700px 500px at 100% 100%, rgba(66,41,90,0.28), transparent 55%),
+      var(--bg);
+  }
+
+  body::before{
+    content:"";
+    position: fixed;
+    inset: 0;
+    background-image:
+      linear-gradient(rgba(240,205,140,0.035) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(240,205,140,0.035) 1px, transparent 1px);
+    background-size: 42px 42px;
+    -webkit-mask-image: radial-gradient(ellipse 600px 500px at 50% 30%, black, transparent 70%);
+    mask-image: radial-gradient(ellipse 600px 500px at 50% 30%, black, transparent 70%);
+    pointer-events: none;
+  }
+
+  .card{
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .frame{
+    position: relative;
+    padding: 52px 32px 36px;
+    background: linear-gradient(180deg, var(--surface) 0%, #100e15 100%);
+    border: 1px solid var(--hairline);
+    box-shadow:
+      0 0 0 1px rgba(0,0,0,0.4),
+      0 30px 70px -30px rgba(0,0,0,0.8),
+      0 0 90px -40px rgba(184,134,63,0.35);
+  }
+
+  .frame::before, .frame::after,
+  .frame b::before, .frame b::after{
+    content:"";
+    position:absolute;
+    width: 20px;
+    height: 20px;
+    border: 1.5px solid var(--gold-1);
+    opacity: .9;
+  }
+  .frame::before{ top:-1.5px; left:-1.5px; border-right:none; border-bottom:none; }
+  .frame::after{ top:-1.5px; right:-1.5px; border-left:none; border-bottom:none; }
+  .frame b::before{ bottom:-1.5px; left:-1.5px; border-right:none; border-top:none; }
+  .frame b::after{ bottom:-1.5px; right:-1.5px; border-left:none; border-top:none; }
+
+  .mark{
+    width: 78px;
+    height: 78px;
+    margin: 0 auto 30px;
+    position: relative;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+  .mark svg{ position:absolute; inset:0; width:100%; height:100%; }
+  .mark span{
+    position: relative;
+    font-family: 'Noto Serif Armenian', serif;
+    font-size: 26px;
+    font-weight: 600;
+    background: linear-gradient(160deg, var(--gold-1), var(--gold-2) 60%, var(--gold-3));
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    letter-spacing: .5px;
+  }
+
+  .name{
+    text-align:center;
+    font-family: 'Noto Serif Armenian', serif;
+    font-weight: 600;
+    font-size: 33px;
+    line-height: 1.25;
+    letter-spacing: .01em;
+    margin: 0;
+    background: linear-gradient(180deg, #fbf3e0 10%, var(--gold-1) 55%, var(--gold-2) 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  .role{
+    text-align:center;
+    color: var(--muted);
+    font-size: 12.5px;
+    font-weight: 400;
+    letter-spacing: .1em;
+    margin: 12px 0 0;
+  }
+
+  .divider{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 8px;
+    margin: 30px 0 28px;
+  }
+  .divider span{
+    width: 3px; height: 3px;
+    background: var(--gold-2);
+    transform: rotate(45deg);
+    opacity: .8;
+  }
+  .divider i{
+    width: 50px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold-2), transparent);
+  }
+
+  .contacts{
+    display:flex;
+    flex-direction: column;
+    gap: 11px;
+  }
+
+  .contact{
+    display:flex;
+    align-items:center;
+    gap: 15px;
+    padding: 15px 17px;
+    background: linear-gradient(180deg, var(--surface-2), var(--surface));
+    border: 1px solid var(--hairline);
+    text-decoration:none;
+    color: var(--ivory);
+    position: relative;
+    transition: border-color .25s ease, transform .25s ease, box-shadow .25s ease;
+  }
+  .contact:active{
+    transform: scale(0.99);
+    border-color: rgba(240,205,140,0.4);
+  }
+  @media (hover:hover){
+    .contact:hover{
+      border-color: rgba(240,205,140,0.4);
+      box-shadow: 0 8px 24px -14px rgba(184,134,63,0.5);
+    }
+  }
+
+  .contact .icon{
+    width: 22px;
+    height: 22px;
+    flex: none;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    color: var(--gold-1);
+  }
+  .contact .icon svg{ width:100%; height:100%; display:block; }
+
+  .contact .text{
+    display:flex;
+    flex-direction: column;
+    gap: 3px;
+    flex: 1;
+    min-width: 0;
+  }
+  .contact .label{
+    font-size: 10.5px;
+    color: var(--muted);
+    font-weight: 500;
+    letter-spacing: .09em;
+    text-transform: uppercase;
+  }
+  .contact .value{
+    font-size: 15.5px;
+    font-weight: 400;
+    letter-spacing: .02em;
+    direction: ltr;
+  }
+
+  .contact .go{
+    color: var(--gold-3);
+    font-size: 15px;
+    flex: none;
+    transition: transform .25s ease, color .25s ease;
+  }
+  .contact:hover .go{
+    color: var(--gold-1);
+    transform: translateX(2px);
+  }
+
+  .save{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap: 10px;
+    text-align:center;
+    margin-top: 26px;
+    padding: 15px 16px;
+    border: 1px solid transparent;
+    background: linear-gradient(100deg, var(--gold-2), var(--gold-1) 50%, var(--gold-2));
+    background-size: 200% 100%;
+    background-position: 0% 0%;
+    color: #1a1408;
+    text-decoration: none;
+    font-size: 13.5px;
+    font-weight: 600;
+    letter-spacing: .04em;
+    cursor: pointer;
+    font-family: inherit;
+    width: 100%;
+    transition: background-position .5s ease;
+  }
+  .save:hover{ background-position: 100% 0%; }
+  .save svg{ width: 16px; height: 16px; }
+
+  .foot{
+    text-align:center;
+    margin-top: 26px;
+    font-size: 10.5px;
+    color: var(--gold-3);
+    letter-spacing: .18em;
+  }
+
+  @media (prefers-reduced-motion: no-preference){
+    .card{ animation: rise .7s cubic-bezier(.2,.8,.2,1) both; }
+    .mark svg circle{ animation: spin 26s linear infinite; transform-origin: 50% 50%; }
+  }
+  @keyframes rise{
+    from{ opacity:0; transform: translateY(10px) scale(.98); }
+    to{ opacity:1; transform: translateY(0) scale(1); }
+  }
+  @keyframes spin{
+    from{ transform: rotate(0deg); }
+    to{ transform: rotate(360deg); }
+  }
+
+  :focus-visible{
+    outline: 1px solid var(--gold-1);
+    outline-offset: 2px;
+  }
+</style>
+</head>
+<body>
+
+  <div class="card">
+    <div class="frame">
+      <b></b>
+
+      <div class="mark">
+        <svg viewBox="0 0 78 78" fill="none">
+          <circle cx="39" cy="39" r="37" stroke="url(#g1)" stroke-width="1"/>
+          <circle cx="39" cy="39" r="30" stroke="url(#g2)" stroke-width="1" stroke-dasharray="2 4"/>
+          <defs>
+            <linearGradient id="g1" x1="0" y1="0" x2="78" y2="78" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#f0cd8c"/>
+              <stop offset="1" stop-color="#6e4f27"/>
+            </linearGradient>
+            <linearGradient id="g2" x1="78" y1="0" x2="0" y2="78" gradientUnits="userSpaceOnUse">
+              <stop stop-color="#b8863f" stop-opacity=".7"/>
+              <stop offset="1" stop-color="#b8863f" stop-opacity="0"/>
+            </linearGradient>
+          </defs>
+        </svg>
+        <span>ՀԱ</span>
+      </div>
+
+      <p class="name">Աբրահամյան<br>Հարութ</p>
+
+      <div class="divider"><i></i><span></span><i></i></div>
+
+      <div class="contacts">
+        <a class="contact" href="tel:+37494012111">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.5.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C11 21 3 13 3 4.9c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.2.2 2.4.6 3.5.1.4 0 .8-.2 1L6.6 10.8z"/></svg>
+          </span>
+          <span class="text">
+            <span class="label">Զանգ</span>
+            <span class="value">+374 94 01 21 11</span>
+          </span>
+          <span class="go">↗</span>
+        </a>
+
+        <a class="contact" href="viber://chat?number=%2B37494012111">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-1.1 0-2.2-.2-3.2-.6L4 21l1-4.6C4.3 15 4 13.6 4 12.1 4 6.5 8.5 3 12 3s8 3.5 8 9.1S15.5 21 12 21z"/><path d="M9 9.5c0 3 2.5 5.5 5.5 5.5" /><circle cx="9" cy="9.5" r=".6" fill="currentColor" stroke="none"/></svg>
+          </span>
+          <span class="text">
+            <span class="label">Viber</span>
+            <span class="value">+374 94 01 21 11</span>
+          </span>
+          <span class="go">↗</span>
+        </a>
+
+        <a class="contact" href="https://wa.me/37494012111" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 21c-1.1 0-2.2-.2-3.2-.6L4 21l1-4.6C4.3 15 4 13.6 4 12.1 4 6.5 8.5 3 12 3s8 3.5 8 9.1S15.5 21 12 21z"/><path d="M8.7 8.6c.2-.4.5-.5.8-.5h.5c.2 0 .4 0 .6.4.2.5.6 1.5.6 1.6.1.1.1.3 0 .4-.1.2-.2.3-.3.4-.1.1-.3.3-.4.4-.1.1-.3.3-.1.6.2.3.8 1.2 1.7 2 1.1 1 2.1 1.3 2.4 1.5.3.1.5.1.6-.1.2-.2.7-.8.9-1 .2-.2.3-.2.6-.1.2.1 1.5.7 1.8.8.3.1.4.2.5.3.1.2.1.9-.2 1.5-.3.6-1.5 1.2-2.1 1.3-.5.1-1.1.1-3.6-1-2.9-1.2-4.7-4.1-4.9-4.3-.1-.2-1.2-1.6-1.2-3s.7-2.2 1-2.5z"/></svg>
+          </span>
+          <span class="text">
+            <span class="label">WhatsApp</span>
+            <span class="value">+374 94 01 21 11</span>
+          </span>
+          <span class="go">↗</span>
+        </a>
+
+        <a class="contact" href="https://t.me/+37494012111" target="_blank" rel="noopener">
+          <span class="icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 4L3 11l6 2.5M21 4L15 20l-6-6.5M21 4L9 13.5"/></svg>
+          </span>
+          <span class="text">
+            <span class="label">Telegram</span>
+            <span class="value">+374 94 01 21 11</span>
+          </span>
+          <span class="go">↗</span>
+        </a>
+      </div>
+
+      <button class="save" onclick="saveContact()">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v13m0 0l-4-4m4 4l4-4M5 21h14"/></svg>
+        Պահպանել կոնտակտում
+      </button>
+    </div>
+    <p class="foot">ՀԱՐՈՒԹ ԱԲՐԱՀԱՄՅԱՆ</p>
+  </div>
+
+<script>
+function saveContact(){
+  const vcard = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:Աբրահամյան;Հարութ;;;",
+    "FN:Աբրահամյան Հարութ",
+    "TEL;TYPE=CELL,VOICE:+37494012111",
+    "END:VCARD"
+  ].join("\r\n");
+
+  const blob = new Blob([vcard], { type: "text/vcard;charset=utf-8" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url;
+  a.download = "Աբրահամյան_Հարութ.vcf";
+  document.body.appendChild(a);
+  a.click();
+  document.body.removeChild(a);
+  URL.revokeObjectURL(url);
+}
+</script>
+
+</body>
+</html>
